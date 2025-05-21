@@ -1,16 +1,10 @@
-import { Loader } from "./components/common/Loader";
-import { generateUsers } from "./utils/generateUsers";
+import UsersTable from "./components/users/UsersTable";
 
-function App() {
-  const users = generateUsers(5);
+const App = () => {
   return (
     <>
-      <Loader />
-      {users.map((user) => (
-        <li>{user.firstName}</li>
-      ))}
+      <UsersTable />
     </>
   );
-}
-
+};
 export default App;
