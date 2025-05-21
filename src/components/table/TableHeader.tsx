@@ -29,7 +29,8 @@ const TableHeader = <T,>({
                   header.column.getToggleSortingHandler()?.(e);
                 }
               }}
-              className="px-4 py-2 text-left text-sm font-medium text-gray-700 cursor-pointer select-none hover:bg-gray-200"
+              className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-gray-700 cursor-pointer select-none hover:bg-gray-200 whitespace-nowrap"
+              style={{ minWidth: "80px" }}
               draggable
               onDragStart={() => onDragStart(header.column.id)}
               onDragOver={(e) => e.preventDefault()}
@@ -39,10 +40,12 @@ const TableHeader = <T,>({
               }}
             >
               <div className="flex items-center gap-1">
-                {flexRender(
-                  header.column.columnDef.header,
-                  header.getContext()
-                )}
+                <span className="truncate">
+                  {flexRender(
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
+                </span>
                 {{
                   asc: <ChevronUp />,
                   desc: <ChevronDown />,

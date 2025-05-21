@@ -6,15 +6,17 @@ const UsersPage = () => {
 
   return (
     <div className="w-full">
-      <header className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">User Management</h1>
-        <p className="text-gray-600 mt-1">
+      <header className="mb-4 sm:mb-6 px-2 sm:px-0">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-800">
+          User Management
+        </h1>
+        <p className="text-sm sm:text-base text-gray-600 mt-1">
           Interactive table with virtualization, sorting, and column reordering
         </p>
       </header>
 
       {error ? (
-        <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-md">
+        <div className="bg-red-50 border-l-4 border-red-500 p-3 sm:p-4 mb-4 sm:mb-6 rounded-md mx-2 sm:mx-0">
           <div className="flex items-start">
             <div className="ml-3">
               <h3 className="text-red-800 font-medium">Error loading data</h3>
@@ -29,13 +31,13 @@ const UsersPage = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-white rounded-lg shadow">
+        <div className="bg-white rounded-lg shadow mx-2 sm:mx-0 overflow-hidden">
           <UsersTable users={users} isLoading={loading} />
         </div>
       )}
 
-      <div className="mt-8 text-center">
-        <p className="text-sm text-gray-500">
+      <div className="mt-6 sm:mt-8 text-center px-2 sm:px-0">
+        <p className="text-xs sm:text-sm text-gray-500">
           User data generated with Faker.js and stored in localStorage
         </p>
 

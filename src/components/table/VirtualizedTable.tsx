@@ -88,68 +88,74 @@ const VirtualizedTable = <T extends { id: string | number }>({
   const virtualRows = rowVirtualizer.getVirtualItems();
 
   return (
-    <div className="p-4">
-      {title && <h2 className="text-2xl font-semibold mb-4">{title}</h2>}
+    <div className="p-2 sm:p-4">
+      {title && (
+        <h2 className="text-lg sm:text-2xl font-semibold mb-2 sm:mb-4 px-2 sm:px-0">
+          {title}
+        </h2>
+      )}
 
       <div
         ref={tableContainerRef}
-        className="overflow-auto rounded border border-gray-200"
-        style={{ height: `${height}px` }}
+        className="overflow-auto rounded border border-gray-200 w-full"
+        style={{ height: `${height}px`, maxHeight: "calc(100vh - 200px)" }}
       >
         {rows.length === 0 ? (
           <EmptyState message={emptyStateMessage} icon={emptyStateIcon} />
         ) : (
-          <table className="min-w-full divide-y divide-gray-200">
-            <TableHeader
-              table={table}
-              onDragStart={handleDragStart}
-              onDrop={handleDrop}
-              draggedColumn={draggedColumn}
-            />
-            <tbody className="divide-y divide-gray-100 bg-white">
-              {virtualRows.length > 0 && (
-                <tr>
-                  <td
-                    style={{
-                      height: `${virtualRows[0].start}px`,
-                    }}
-                    colSpan={table.getAllColumns().length}
-                  />
-                </tr>
-              )}
-              {virtualRows.map((virtualRow) => {
-                const row = rows[virtualRow.index];
-                return (
-                  <TableRow
-                    key={row.id}
-                    row={row}
-                    virtualIndex={virtualRow.index}
-                    measureRef={(el) => rowVirtualizer.measureElement(el)}
-                  />
-                );
-              })}
-
-              {virtualRows.length > 0 && (
-                <tr>
-                  <td
-                    style={{
-                      height: `${
-                        totalHeight - virtualRows[virtualRows.length - 1].end
-                      }px`,
-                    }}
-                    colSpan={table.getAllColumns().length}
-                  />
-                </tr>
-              )}
-            </tbody>
-          </table>
+          <div className="min-w-full">
+            <table className="w-full divide-y divide-gray-200 min-w-max">
+              <TableHeader
+                table={table}
+                onDragStart={handleDragStart}
+                onDrop={handleDrop}
+                draggedColumn={draggedColumn}
+              />
+              <tbody className="divide-y divide-gray-100 bg-white">
+                {virtualRows.length > 0 && (
+                  <tr>
+                    <td
+                      style={{
+                        height: `${virtualRows[0].start}px`,
+                      }}
+                      colSpan={table.getAllColumns().length}
+                    />
+                  </tr>
+                )}
+                {virtualRows.map((virtualRow) => {
+                  const row = rows[virtualRow.index];
+                  return (
+                    <TableRow
+                      key={row.id}
+                      row={row}
+                      virtualIndex={virtualRow.index}
+                      measureRef={(el) => rowVirtualizer.measureElement(el)}
+                    />
+                  );
+                })}
+                {virtualRows.length > 0 && (
+                  <tr>
+                    <td
+                      style={{
+                        height: `${
+                          totalHeight - virtualRows[virtualRows.length - 1].end
+                        }px`,
+                      }}
+                      colSpan={table.getAllColumns().length}
+                    />
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
-
-      <TableFooter
-        totalCount={rows.length}
-        virtualRowsCount={virtualRows.length}
-      />
+      <div className="px-2 sm:px-0">
+        <TableFooter
+          totalCount={rows.length}
+          virtualRowsCount={virtualRows.length}
+        />
+      </div>
     </div>
   );
 };
