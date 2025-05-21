@@ -1,5 +1,11 @@
+import { Loader } from "./components/common/Loader";
+
 function App() {
-  return <h1>Hello World!</h1>;
+  return (
+    <>
+      <Loader />
+    </>
+  );
 }
 
 export default App;
