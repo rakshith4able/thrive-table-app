@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { type User } from "../types/user";
+import { type User } from "../types/User";
 import { formatDate } from "./dateUtils";
 
 export function generateUsers(count: number): User[] {
@@ -10,6 +10,7 @@ export function generateUsers(count: number): User[] {
   for (let i = 0; i < count; i++) {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
+
     const now = new Date();
     const twoYearsAgo = new Date();
     twoYearsAgo.setFullYear(now.getFullYear() - 2);
@@ -20,7 +21,7 @@ export function generateUsers(count: number): User[] {
     });
 
     users.push({
-      id: `user-${String(i + 1).padStart(3, "0")}`,
+      id: i + 1,
       firstName,
       lastName,
       email: faker.internet.email({ firstName, lastName }),

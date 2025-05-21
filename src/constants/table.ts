@@ -1,0 +1,4 @@
+export const VIRTUALIZED_TABLE_CONTANTS = {
+  ROW_HEIGHT: 48,
+  TABLE_HEIGHT: 500,
+};

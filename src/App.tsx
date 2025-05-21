@@ -1,12 +1,9 @@
-import UsersTable from "./components/users/UsersTable";
-import useUsers from "./hooks/useUsers";
+import UsersPage from "./pages/UsersPage";
 const App = () => {
-  const { users } = useUsers();
   return (
-    <>
-      <UsersTable />
-      {users.length}
-    </>
+    <div className="container mx-auto px-10 max-h-screen">
+      <UsersPage />
+    </div>
   );
 };
 export default App;
