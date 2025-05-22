@@ -1,4 +1,4 @@
-import { type User } from "../types/user";
+import { type User } from "../types/User";
 import { generateUsers } from "../utils/generateUsers";
 import { sleep } from "../utils/sleep";
 import { USER_CONSTANTS } from "../constants/user";

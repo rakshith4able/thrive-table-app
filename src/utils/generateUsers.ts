@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { type User } from "../types/user";
+import { type User } from "../types/User";
 import { formatDate } from "./dateUtils";
 import { UI_CONSTANTS } from "../constants/ui";
 import { USER_CONSTANTS } from "../constants/user";

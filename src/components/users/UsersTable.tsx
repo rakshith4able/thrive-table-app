@@ -2,9 +2,10 @@ import React from "react";
 import VirtualizedTable from "../virtualized/VirtualizedTable";
 import Loader from "../common/Loader";
 import useTableConfig from "../../hooks/useTableConfig";
-import type { User } from "../../types/user";
+
 import { INITIAL_COLUMN_ORDER } from "../../constants/column";
 import { userColumns } from "../../config/userColumns";
+import type { User } from "../../types/User";
 
 interface UsersTableProps {
   users: User[];
