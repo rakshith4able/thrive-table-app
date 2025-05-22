@@ -1,57 +1,10 @@
 import React from "react";
-import { type ColumnDef } from "@tanstack/react-table";
-import VirtualizedTable from "../table/VirtualizedTable";
-import useTableConfig from "../../hooks/useTableConfig";
-
-import { calculateDaysSince } from "../../utils/dateUtils";
+import VirtualizedTable from "../table/virtualized/VirtualizedTable";
 import Loader from "../common/Loader";
+import useTableConfig from "../../hooks/useTableConfig";
 import type { User } from "../../types/user";
-
-export const columnIds = {
-  id: "id",
-  firstName: "firstName",
-  lastName: "lastName",
-  email: "email",
-  city: "city",
-  registeredDate: "registeredDate",
-  fullName: "fullName",
-  dsr: "dsr",
-} as const;
-
-export const initialColumnOrder: string[] = [
-  columnIds.id,
-  columnIds.firstName,
-  columnIds.lastName,
-  columnIds.email,
-  columnIds.city,
-  columnIds.registeredDate,
-  columnIds.fullName,
-  columnIds.dsr,
-];
-
-export const userColumns: ColumnDef<User>[] = [
-  { id: columnIds.id, accessorKey: "id", header: "ID" },
-  { id: columnIds.firstName, accessorKey: "firstName", header: "First Name" },
-  { id: columnIds.lastName, accessorKey: "lastName", header: "Last Name" },
-  { id: columnIds.email, accessorKey: "email", header: "Email" },
-  { id: columnIds.city, accessorKey: "city", header: "City" },
-  {
-    id: columnIds.registeredDate,
-    accessorKey: "registeredDate",
-    header: "Registered Date",
-  },
-  {
-    id: columnIds.fullName,
-    accessorFn: (row) => `${row.firstName} ${row.lastName}`,
-    header: "Full Name",
-  },
-  {
-    id: columnIds.dsr,
-    accessorFn: (row) => calculateDaysSince(row.registeredDate),
-    header: "DSR",
-    cell: (info) => `${info.getValue()} days`,
-  },
-];
+import { INITIAL_COLUMN_ORDER } from "../../constants/column";
+import { userColumns } from "../../config/userColumns";
 
 interface UsersTableProps {
   users: User[];
@@ -69,7 +22,7 @@ const UsersTable: React.FC<UsersTableProps> = ({
   const { table, columnOrder, setColumnOrder } = useTableConfig({
     data: users,
     columns: userColumns,
-    initialColumnOrder,
+    initialColumnOrder: INITIAL_COLUMN_ORDER,
   });
 
   if (isLoading) return <Loader />;
