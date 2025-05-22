@@ -1,5 +1,5 @@
 import React from "react";
-import VirtualizedTable from "../table/virtualized/VirtualizedTable";
+import VirtualizedTable from "../virtualized/VirtualizedTable";
 import Loader from "../common/Loader";
 import useTableConfig from "../../hooks/useTableConfig";
 import type { User } from "../../types/user";

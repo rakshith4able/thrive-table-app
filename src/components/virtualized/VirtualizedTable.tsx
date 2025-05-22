@@ -1,10 +1,10 @@
 import React from "react";
 import { type Table, type ColumnOrderState } from "@tanstack/react-table";
-import { useVirtualizedTable } from "../../../hooks/useVirtualizedTable";
-import { useColumnDragDrop } from "../../../hooks/useColumnDragDrop";
+import { useVirtualizedTable } from "../../hooks/useVirtualizedTable";
+import { useColumnDragDrop } from "../../hooks/useColumnDragDrop";
 import VirtualizedContainer from "./VirtualizedContainer";
 import VirtualizedTitle from "./VirtualizedTitle";
-import TableFooter from "../TableFooter";
+import TableFooter from "../table/TableFooter";
 
 interface VirtualizedTableProps<T> {
   table: Table<T>;

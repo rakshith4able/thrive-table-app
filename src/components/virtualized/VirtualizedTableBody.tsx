@@ -1,6 +1,6 @@
 import { type Table } from "@tanstack/react-table";
 import { type VirtualItem, type Virtualizer } from "@tanstack/react-virtual";
-import TableRow from "../TableRow";
+import TableRow from "../table/TableRow";
 
 interface VirtualizedTableBodyProps<T> {
   table: Table<T>;

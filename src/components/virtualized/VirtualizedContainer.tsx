@@ -1,9 +1,9 @@
 import React, { type RefObject } from "react";
 import { type Table } from "@tanstack/react-table";
 import { type VirtualItem, type Virtualizer } from "@tanstack/react-virtual";
-import TableHeader from "../TableHeader";
+import TableHeader from "../table/TableHeader";
 import VirtualizedTableBody from "./VirtualizedTableBody";
-import EmptyState from "../EmptyState";
+import EmptyState from "../table/EmptyState";
 
 interface VirtualizedContainerProps<T> {
   table: Table<T>;
