@@ -5,6 +5,8 @@ import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 import TableFooter from "./TableFooter";
 import EmptyState from "./EmptyState";
+import { UI_CONSTANTS } from "../../constants/ui";
+import { VIRTUALIZED_TABLE_CONSTANTS } from "../../constants/table";
 
 interface VirtualizedTableProps<T> {
   table: Table<T>;
@@ -60,8 +62,8 @@ const VirtualizedTable = <T extends { id: string | number }>({
   const rowVirtualizer = useVirtualizer({
     count: rows.length,
     getScrollElement: () => tableContainerRef.current,
-    estimateSize: () => 41,
-    overscan: 10,
+    estimateSize: () => VIRTUALIZED_TABLE_CONSTANTS.ESTIMATED_ROW_SIZE,
+    overscan: VIRTUALIZED_TABLE_CONSTANTS.OVERSCAN,
   });
 
   const handleDragStart = (id: string) => {
@@ -98,7 +100,10 @@ const VirtualizedTable = <T extends { id: string | number }>({
       <div
         ref={tableContainerRef}
         className="overflow-auto rounded border border-gray-200 w-full"
-        style={{ height: `${height}px`, maxHeight: "calc(100vh - 200px)" }}
+        style={{
+          height: `${height}px`,
+          maxHeight: `calc(100vh - ${UI_CONSTANTS.VIEWPORT_OFFSET}px)`,
+        }}
       >
         {rows.length === 0 ? (
           <EmptyState message={emptyStateMessage} icon={emptyStateIcon} />

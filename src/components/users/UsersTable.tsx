@@ -2,9 +2,10 @@ import React from "react";
 import { type ColumnDef } from "@tanstack/react-table";
 import VirtualizedTable from "../table/VirtualizedTable";
 import useTableConfig from "../../hooks/useTableConfig";
-import type { User } from "../../types/User";
+
 import { calculateDaysSince } from "../../utils/dateUtils";
 import Loader from "../common/Loader";
+import type { User } from "../../types/user";
 
 export const columnIds = {
   id: "id",

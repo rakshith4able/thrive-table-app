@@ -1,0 +1,5 @@
+export const UI_CONSTANTS = {
+  SCROLL_TIMEOUT: 0,
+  FAKER_SEED: 123,
+  VIEWPORT_OFFSET: 200,
+};

@@ -1,9 +1,11 @@
 import { faker } from "@faker-js/faker";
-import { type User } from "../types/User";
+import { type User } from "../types/user";
 import { formatDate } from "./dateUtils";
+import { UI_CONSTANTS } from "../constants/ui";
+import { USER_CONSTANTS } from "../constants/user";
 
 export function generateUsers(count: number): User[] {
-  faker.seed(123);
+  faker.seed(UI_CONSTANTS.FAKER_SEED);
 
   const users = [];
 
@@ -13,7 +15,7 @@ export function generateUsers(count: number): User[] {
 
     const now = new Date();
     const twoYearsAgo = new Date();
-    twoYearsAgo.setFullYear(now.getFullYear() - 2);
+    twoYearsAgo.setFullYear(now.getFullYear() - USER_CONSTANTS.YEARS_BACK);
 
     const registeredDate = faker.date.between({
       from: twoYearsAgo,

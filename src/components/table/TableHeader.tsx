@@ -3,6 +3,7 @@ import {
   BiChevronDown as ChevronDown,
   BiChevronUp as ChevronUp,
 } from "react-icons/bi";
+import { VIRTUALIZED_TABLE_CONSTANTS } from "../../constants/table";
 
 interface TableHeaderProps<T> {
   table: Table<T>;
@@ -30,7 +31,7 @@ const TableHeader = <T,>({
                 }
               }}
               className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm font-medium text-gray-700 cursor-pointer select-none hover:bg-gray-200 whitespace-nowrap"
-              style={{ minWidth: "80px" }}
+              style={{ minWidth: VIRTUALIZED_TABLE_CONSTANTS.MIN_COLUMN_WIDTH }}
               draggable
               onDragStart={() => onDragStart(header.column.id)}
               onDragOver={(e) => e.preventDefault()}

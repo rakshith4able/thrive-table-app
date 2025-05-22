@@ -1,4 +1,5 @@
 import UsersTable from "../components/users/UsersTable";
+import { USER_CONSTANTS } from "../constants/user";
 import useUsers from "../hooks/useUsers";
 
 const UsersPage = () => {
@@ -44,8 +45,7 @@ const UsersPage = () => {
         <button
           className="mt-2 px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 text-xs"
           onClick={() => {
-            localStorage.removeItem("users_data");
-            localStorage.removeItem("userTable_columnOrder");
+            localStorage.removeItem(USER_CONSTANTS.STORAGE_KEY);
             window.location.reload();
           }}
         >
